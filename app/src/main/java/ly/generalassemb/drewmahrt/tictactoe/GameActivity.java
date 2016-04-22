@@ -3,6 +3,7 @@ package ly.generalassemb.drewmahrt.tictactoe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
@@ -39,6 +40,13 @@ public class GameActivity extends AppCompatActivity {
         //just a test to make sure my shizznit is coming over
         //Log.d("GameActivity", player1);
 
+        box1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
 
 
 
