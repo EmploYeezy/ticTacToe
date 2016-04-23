@@ -3,6 +3,7 @@ package ly.generalassemb.drewmahrt.tictactoe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView box9;
     private int position;
     private int counter;
+    private int mplayer1;
+    private int mplayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
         box9 = (TextView) findViewById(R.id.textView9);
 
         Intent getIntent = getIntent();
-        String player1 = getIntent.getStringExtra("Player1");
+        final String player1 = getIntent.getStringExtra("Player1");
         String player2 = getIntent.getStringExtra("Player2");
         //just a test to make sure my shizznit is coming over
         //Log.d("GameActivity", player1);
@@ -83,10 +86,19 @@ public class GameActivity extends AppCompatActivity {
                 default:
                     messagetext.setText("no more turns");
 
-                //I don't think this will work.g
+        mplayer1 = (1);
+        mplayer2 = (2);
 
-
-
+        box1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((counter == 0) || (counter == 2) || (counter == 4) || (counter == 6) || (counter == 8)){
+                    messagetext.setText("X");
+                } else {
+                    messagetext.setText("O");
+                }
+            }
+        });
 
 
 
