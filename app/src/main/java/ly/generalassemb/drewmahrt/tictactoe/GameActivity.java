@@ -83,7 +83,7 @@ public class GameActivity extends AppCompatActivity {
                 default:
                     messagetext.setText("no more turns");
 
-
+                //I don't think this will work.g
 
 
 
