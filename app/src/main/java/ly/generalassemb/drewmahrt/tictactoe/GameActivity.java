@@ -20,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView box9;
     private int position;
     private int counter;
+    private int counter2;
     private int mplayer1;
     private int mplayer2;
 
@@ -92,7 +93,8 @@ public class GameActivity extends AppCompatActivity {
         box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((counter == 0) || (counter == 2) || (counter == 4) || (counter == 6) || (counter == 8)){
+                counter2++;
+                if ((counter2 == 0) || (counter2 == 2) || (counter2 == 4) || (counter2 == 6) || (counter2 == 8)){
                     messagetext.setText("X");
                 } else {
                     messagetext.setText("O");
