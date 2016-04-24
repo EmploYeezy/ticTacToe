@@ -42,7 +42,7 @@ public class GameActivity extends AppCompatActivity {
 
         Intent getIntent = getIntent();
         final String player1 = getIntent.getStringExtra("Player1");
-        String player2 = getIntent.getStringExtra("Player2");
+        final String player2 = getIntent.getStringExtra("Player2");
         //just a test to make sure my shizznit is coming over
         //Log.d("GameActivity", player1);
 
@@ -52,8 +52,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box1.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box1.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -64,8 +66,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box2.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box2.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -76,8 +80,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box3.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box3.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -88,8 +94,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box4.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box4.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -100,8 +108,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box5.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box5.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -112,8 +122,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box6.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box6.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -124,8 +136,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box7.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box7.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -136,8 +150,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box8.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box8.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
@@ -148,8 +164,10 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box9.setText("0");
+                    messagetext.setText(player1);
                 } else {
                     box9.setText("X");
+                    messagetext.setText(player2);
                 }
             }
         });
