@@ -46,6 +46,114 @@ public class GameActivity extends AppCompatActivity {
         //just a test to make sure my shizznit is coming over
         //Log.d("GameActivity", player1);
 
+        box1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box1.setText("0");
+                } else {
+                    box1.setText("X");
+                }
+            }
+        });
+
+        box2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box2.setText("0");
+                } else {
+                    box2.setText("X");
+                }
+            }
+        });
+
+        box3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box3.setText("0");
+                } else {
+                    box3.setText("X");
+                }
+            }
+        });
+
+        box4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box4.setText("0");
+                } else {
+                    box4.setText("X");
+                }
+            }
+        });
+
+        box5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box5.setText("0");
+                } else {
+                    box5.setText("X");
+                }
+            }
+        });
+
+        box6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box6.setText("0");
+                } else {
+                    box6.setText("X");
+                }
+            }
+        });
+
+        box7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box7.setText("0");
+                } else {
+                    box7.setText("X");
+                }
+            }
+        });
+
+        box8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box8.setText("0");
+                } else {
+                    box8.setText("X");
+                }
+            }
+        });
+
+        box9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter2++;
+                if (counter2 % 2 == 0) {
+                    box9.setText("0");
+                } else {
+                    box9.setText("X");
+                }
+            }
+        });
+
         while (counter < 9) {
             switch (position) {
                 case 0:
@@ -89,19 +197,6 @@ public class GameActivity extends AppCompatActivity {
 
         mplayer1 = (1);
         mplayer2 = (2);
-
-        box1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                counter2++;
-                if ((counter2 == 0) || (counter2 == 2) || (counter2 == 4) || (counter2 == 6) || (counter2 == 8)){
-                    messagetext.setText("X");
-                } else {
-                    messagetext.setText("O");
-                }
-            }
-        });
-
 
 
 
