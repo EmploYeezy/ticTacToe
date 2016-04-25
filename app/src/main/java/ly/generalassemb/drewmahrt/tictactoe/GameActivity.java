@@ -51,7 +51,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box1.setText("0");
+                    box1.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box1.setText("X");
@@ -65,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box2.setText("0");
+                    box2.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box2.setText("X");
@@ -79,7 +79,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box3.setText("0");
+                    box3.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box3.setText("X");
@@ -93,7 +93,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box4.setText("0");
+                    box4.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box4.setText("X");
@@ -107,7 +107,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box5.setText("0");
+                    box5.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box5.setText("X");
@@ -121,7 +121,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box6.setText("0");
+                    box6.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box6.setText("X");
@@ -135,7 +135,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box7.setText("0");
+                    box7.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box7.setText("X");
@@ -149,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box8.setText("0");
+                    box8.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box8.setText("X");
@@ -163,7 +163,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
-                    box9.setText("0");
+                    box9.setText("O");
                     messagetext.setText(player1);
                 } else {
                     box9.setText("X");
