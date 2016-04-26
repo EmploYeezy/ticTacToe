@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -20,6 +21,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView box7;
     private TextView box8;
     private TextView box9;
+    int [] [] playTracker = new int [3][3];
     //private char playTracker;
     //private int position;
     //private int counter;
@@ -55,30 +57,30 @@ public class GameActivity extends AppCompatActivity {
         //Log.d("GameActivity", player1);
 
         messagetext.setText(player1 + " is crosses");
-        final int [] [] playTracker = new int [3][3];
 
         box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box1.setText("O");
                     messagetext.setText(player1 + "'s turn");
-                    box1.setClickable(false);
                     playTracker[0][0] = 1;
+                    box1.setClickable(false);
                 } else {
                     box1.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[0][0] = 0;
+                    playTracker[0][0] = 2;
                     box1.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box2.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -87,16 +89,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box2.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[0][1] = 0;
+                    playTracker[0][1] = 2;
                     box2.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box3.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -105,16 +108,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box3.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[0][2] = 0;
+                    playTracker[0][2] = 2;
                     box3.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box4.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -123,16 +127,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box4.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[1][0] = 0;
+                    playTracker[1][0] = 2;
                     box4.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box5.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -141,16 +146,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box5.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[1][1] = 0;
+                    playTracker[1][1] = 2;
                     box5.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box6.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -159,16 +165,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box6.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[1][2] = 0;
+                    playTracker[1][2] = 2;
                     box6.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box7.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -177,16 +184,17 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box7.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[2][0] = 0;
+                    playTracker[2][0] = 2;
                     box7.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
+
                 if (counter2 % 2 == 0) {
                     box8.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -195,16 +203,16 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box8.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[2][1] = 0;
+                    playTracker[2][1] = 2;
                     box8.setClickable(false);
                 }
+                checkForWinner();
             }
         });
 
         box9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter2++;
                 if (counter2 % 2 == 0) {
                     box9.setText("O");
                     messagetext.setText(player1 + "'s turn");
@@ -213,10 +221,39 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     box9.setText("X");
                     messagetext.setText(player2 + "'s turn");
-                    playTracker[2][2] = 0;
+                    playTracker[2][2] = 2;
                     box9.setClickable(false);
                 }
+                checkForWinner();
             }
         });
     }
+
+        public void checkForWinner() {
+            counter2++;
+            //Log.d("checkForWinner", "method invoked");
+//             boolean someOneWon = false;
+
+            // if any boxes are zero, dont check
+            if ( playTracker[0][0] == 0 || playTracker[0][1] == 0 || playTracker[0][2] == 0 ){
+                //dont check
+            // else if all three are equal
+            } else if(playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]){
+
+                if ( playTracker[0][0] == 1) {
+                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+
+
+
+
+
+
+    }
+
 }
