@@ -46,16 +46,20 @@ public class GameActivity extends AppCompatActivity {
         //just a test to make sure my shizznit is coming over
         //Log.d("GameActivity", player1);
 
+        messagetext.setText(player1 + " is crosses");
+
         box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box1.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box1.setClickable(false);
                 } else {
                     box1.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box1.setClickable(false);
                 }
             }
         });
@@ -66,10 +70,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box2.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box2.setClickable(false);
                 } else {
                     box2.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box2.setClickable(false);
                 }
             }
         });
@@ -80,10 +86,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box3.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box3.setClickable(false);
                 } else {
                     box3.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box3.setClickable(false);
                 }
             }
         });
@@ -94,10 +102,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box4.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 +"'s turn");
+                    box4.setClickable(false);
                 } else {
                     box4.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box4.setClickable(false);
                 }
             }
         });
@@ -108,10 +118,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box5.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box5.setClickable(false);
                 } else {
                     box5.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box5.setClickable(false);
                 }
             }
         });
@@ -122,10 +134,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box6.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box6.setClickable(false);
                 } else {
                     box6.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box6.setClickable(false);
                 }
             }
         });
@@ -136,10 +150,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box7.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box7.setClickable(false);
                 } else {
                     box7.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box7.setClickable(false);
                 }
             }
         });
@@ -150,10 +166,12 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box8.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box8.setClickable(false);
                 } else {
                     box8.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box8.setClickable(false);
                 }
             }
         });
@@ -164,65 +182,16 @@ public class GameActivity extends AppCompatActivity {
                 counter2++;
                 if (counter2 % 2 == 0) {
                     box9.setText("O");
-                    messagetext.setText(player1);
+                    messagetext.setText(player1 + "'s turn");
+                    box9.setClickable(false);
                 } else {
                     box9.setText("X");
-                    messagetext.setText(player2);
+                    messagetext.setText(player2 + "'s turn");
+                    box9.setClickable(false);
                 }
             }
         });
 
-        while (counter < 9) {
-            switch (position) {
-                case 0:
-                    counter++;
-                    messagetext.setText(player1);
-                    break;
-                case 1:
-                    counter++;
-                    messagetext.setText(player2);
-                    break;
-                case 2:
-                    counter++;
-                    messagetext.setText(player1);
-                    break;
-                case 3:
-                    counter++;
-                    messagetext.setText(player2);
-                    break;
-                case 4:
-                    counter++;
-                    messagetext.setText(player1);
-                    break;
-                case 5:
-                    counter++;
-                    messagetext.setText(player2);
-                    break;
-                case 6:
-                    counter++;
-                    messagetext.setText(player1);
-                    break;
-                case 7:
-                    counter++;
-                    messagetext.setText(player2);
-                    break;
-                case 8:
-                    counter++;
-                    messagetext.setText(player1);
-                    break;
-                default:
-                    messagetext.setText("no more turns");
-
-        mplayer1 = (1);
-        mplayer2 = (2);
-
-
-
-
-
-
-            }
-        }
     }
 }
 
