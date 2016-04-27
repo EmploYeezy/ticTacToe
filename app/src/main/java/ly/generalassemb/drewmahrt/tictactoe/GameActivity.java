@@ -241,13 +241,11 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]){
 
                 if ( playTracker[0][0] == 1) {
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                } else {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
                 }
             }
-
-
 
 
 
