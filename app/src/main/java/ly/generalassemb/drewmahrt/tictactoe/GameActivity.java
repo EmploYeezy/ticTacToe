@@ -261,8 +261,6 @@ public class GameActivity extends AppCompatActivity {
             }
             //line three horizontal checker
             if (playTracker[2][0] == 0 || playTracker[2][1] == 0 || playTracker[2][2] == 0 ){
-                //dont check
-                // else if all three are equal
             } else if(playTracker[2][0] == playTracker[2][1] && playTracker[2][0] == playTracker[2][2]){
 
                 if (playTracker[2][1] == 1) {
@@ -273,8 +271,6 @@ public class GameActivity extends AppCompatActivity {
             }
             //Begins Vertical checkers column 1
             if (playTracker[0][0] == 0 || playTracker[1][0] == 0 || playTracker[2][0] == 0 ){
-                //dont check
-                // else if all three are equal
             } else if(playTracker[0][0] == playTracker[1][0] && playTracker[2][0] == playTracker[0][0]){
 
                 if (playTracker[0][0] == 1) {
@@ -283,13 +279,23 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
+
                 //Vertical checkers column 2
             if (playTracker[0][1] == 0 || playTracker[1][1] == 0 || playTracker[2][1] == 0 ){
-                //dont check
-                // else if all three are equal
             } else if(playTracker[0][1] == playTracker[1][1] && playTracker[2][1] == playTracker[0][1]){
 
                 if (playTracker[0][1] == 1) {
+                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+                //Vertical column three checker
+            if (playTracker[0][2] == 0 || playTracker[1][2] == 0 || playTracker[2][2] == 0 ){
+            } else if(playTracker[0][2] == playTracker[1][2] && playTracker[2][2] == playTracker[0][2]){
+
+                if (playTracker[0][2] == 1) {
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
