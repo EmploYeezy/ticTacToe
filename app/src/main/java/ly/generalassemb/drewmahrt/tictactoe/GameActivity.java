@@ -298,7 +298,7 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
-                //Diagonal left to right from 0,0 Win checker.
+                //Diagonal left to right from 0,0 Win checker
             if (playTracker[0][0] == 0 || playTracker[1][1] == 0 || playTracker[2][2] == 0 ){
             } else if(playTracker[0][0] == playTracker[1][1] && playTracker[2][2] == playTracker[0][0]){
 
@@ -308,7 +308,16 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
+                //Diagonal from left to right starting at 2,0 win checker
+            if (playTracker[2][0] == 0 || playTracker[1][1] == 0 || playTracker[0][2] == 0 ){
+            } else if(playTracker[2][0] == playTracker[1][1] && playTracker[0][2] == playTracker[2][0]){
 
+                if (playTracker[2][0] == 1) {
+                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                }
+            }
     }
 
 }
