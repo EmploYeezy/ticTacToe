@@ -232,13 +232,9 @@ public class GameActivity extends AppCompatActivity {
 
         public void checkForWinner() {
             counter2++;
-            //Log.d("checkForWinner", "method invoked");
-//             boolean someOneWon = false;
 
-            // if any boxes are zero, dont check
+           //beings horizontal win Checker @ position 0,0
             if (playTracker[0][0] == 0 || playTracker[0][1] == 0 || playTracker[0][2] == 0 ){
-                //dont check
-            // else if all three are equal
             } else if(playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]){
 
                 if (playTracker[0][0] == 1) {
@@ -247,10 +243,9 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
+
             //line two horizontal checker
             if (playTracker[1][0] == 0 || playTracker[1][1] == 0 || playTracker[1][2] == 0 ){
-                //dont check
-                // else if all three are equal
             } else if(playTracker[1][0] == playTracker[1][1] && playTracker[1][0] == playTracker[1][2]){
 
                 if (playTracker[1][1] == 1) {
@@ -259,6 +254,7 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
+
             //line three horizontal checker
             if (playTracker[2][0] == 0 || playTracker[2][1] == 0 || playTracker[2][2] == 0 ){
             } else if(playTracker[2][0] == playTracker[2][1] && playTracker[2][0] == playTracker[2][2]){
@@ -269,6 +265,7 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
+
             //Begins Vertical checkers column 1
             if (playTracker[0][0] == 0 || playTracker[1][0] == 0 || playTracker[2][0] == 0 ){
             } else if(playTracker[0][0] == playTracker[1][0] && playTracker[2][0] == playTracker[0][0]){
@@ -301,8 +298,16 @@ public class GameActivity extends AppCompatActivity {
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
+                //Diagonal left to right from 0,0 Win checker.
+            if (playTracker[0][0] == 0 || playTracker[1][1] == 0 || playTracker[2][2] == 0 ){
+            } else if(playTracker[0][0] == playTracker[1][1] && playTracker[2][2] == playTracker[0][0]){
 
-
+                if (playTracker[0][0] == 1) {
+                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                }
+            }
 
     }
 
