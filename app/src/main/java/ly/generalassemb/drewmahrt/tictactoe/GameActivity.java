@@ -247,9 +247,17 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
+            if ( playTracker[1][0] == 0 || playTracker[1][1] == 0 || playTracker[1][2] == 0 ){
+                //dont check
+                // else if all three are equal
+            } else if(playTracker[1][0] == playTracker[1][1] && playTracker[1][0] == playTracker[1][2]){
 
-
-
+                if ( playTracker[1][1] == 1) {
+                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                }
+            }
 
 
     }
