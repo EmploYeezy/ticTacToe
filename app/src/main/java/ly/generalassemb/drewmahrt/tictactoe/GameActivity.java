@@ -1,6 +1,8 @@
 package ly.generalassemb.drewmahrt.tictactoe;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView box7;
     private TextView box8;
     private TextView box9;
+    public String winner;
     int [] [] playTracker = new int [3][3];
     //private char playTracker;
     //private int position;
@@ -230,7 +233,23 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-        public void checkForWinner() {
+
+
+    @Override
+    public String toString() {
+        return "GameActivity{" +
+                "winner='" + winner + '\'' +
+                '}';
+    }
+
+    public void saveWinner() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("naughtsAndCrossesKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("winner", winner);
+        editor.commit();
+    }
+
+    public void checkForWinner() {
             counter2++;
 
            //beings horizontal win Checker @ position 0,0
@@ -238,8 +257,12 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]){
 
                 if (playTracker[0][0] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
                 }
             }
