@@ -14,17 +14,25 @@
         android:id="@+id/game_message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="Player One&apos;s Turn"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="#FF4081"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="100dp"/>
+        android:paddingBottom="100dp"
+        android:textIsSelectable="false" />
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnCount="3"
         android:rowCount="3"
-        android:layout_below="@+id/game_message_text">
+        android:elevation="6dp"
+        android:animateLayoutChanges="true"
+        android:layout_below="@+id/game_message_text"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:foregroundTint="#E1BEE7"
+        android:foregroundTintMode="add">
 
         <TextView
             android:layout_width="100dp"
@@ -89,7 +97,8 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:gravity="center"
-            android:background="@drawable/border" />
+            android:background="@drawable/border"
+            android:clickable="true" />
 
         <TextView
             android:layout_width="100dp"
@@ -141,7 +150,8 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:gravity="center"
-            android:background="@drawable/border" />
+            android:background="@drawable/border"
+            android:clickable="true" />
 
     </GridLayout>
 </RelativeLayout>

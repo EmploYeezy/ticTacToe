@@ -1,8 +1,10 @@
 package ly.generalassemb.drewmahrt.tictactoe;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -59,7 +61,7 @@ public class GameActivity extends AppCompatActivity {
         //just a test to make sure my shizznit is coming over
         //Log.d("GameActivity", player1);
 
-        messagetext.setText(player1 + " is crosses");
+        messagetext.setText(player1 + " is naughts");
 
 
         box1.setOnClickListener(new View.OnClickListener() {
@@ -68,12 +70,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box1.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[0][0] = 1;
                     box1.setClickable(false);
                 } else {
                     box1.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[0][0] = 2;
                     box1.setClickable(false);
                 }
@@ -87,12 +89,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box2.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[0][1] = 1;
                     box2.setClickable(false);
                 } else {
                     box2.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[0][1] = 2;
                     box2.setClickable(false);
                 }
@@ -106,12 +108,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box3.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[0][2] = 1;
                     box3.setClickable(false);
                 } else {
                     box3.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[0][2] = 2;
                     box3.setClickable(false);
                 }
@@ -125,12 +127,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box4.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[1][0] = 1;
                     box4.setClickable(false);
                 } else {
                     box4.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[1][0] = 2;
                     box4.setClickable(false);
                 }
@@ -144,12 +146,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box5.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[1][1] = 1;
                     box5.setClickable(false);
                 } else {
                     box5.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[1][1] = 2;
                     box5.setClickable(false);
                 }
@@ -163,12 +165,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box6.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[1][2] = 1;
                     box6.setClickable(false);
                 } else {
                     box6.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[1][2] = 2;
                     box6.setClickable(false);
                 }
@@ -182,12 +184,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box7.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[2][0] = 1;
                     box7.setClickable(false);
                 } else {
                     box7.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[2][0] = 2;
                     box7.setClickable(false);
                 }
@@ -201,12 +203,12 @@ public class GameActivity extends AppCompatActivity {
 
                 if (counter2 % 2 == 0) {
                     box8.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[2][1] = 1;
                     box8.setClickable(false);
                 } else {
                     box8.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[2][1] = 2;
                     box8.setClickable(false);
                 }
@@ -219,12 +221,12 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (counter2 % 2 == 0) {
                     box9.setText("O");
-                    messagetext.setText(player1 + "'s turn");
+                    messagetext.setText(player2 + "'s turn");
                     playTracker[2][2] = 1;
                     box9.setClickable(false);
                 } else {
                     box9.setText("X");
-                    messagetext.setText(player2 + "'s turn");
+                    messagetext.setText(player1 + "'s turn");
                     playTracker[2][2] = 2;
                     box9.setClickable(false);
                 }
@@ -249,10 +251,31 @@ public class GameActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    public void disableAllTheClickers() {
+        box1.setClickable(false);
+        box2.setClickable(false);
+        box3.setClickable(false);
+        box4.setClickable(false);
+        box5.setClickable(false);
+        box6.setClickable(false);
+        box7.setClickable(false);
+        box8.setClickable(false);
+        box9.setClickable(false);
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
     public void checkForWinner() {
             counter2++;
+        Intent getIntent = getIntent();
+        final String player1 = getIntent.getStringExtra("Player1");
+        final String player2 = getIntent.getStringExtra("Player2");
 
-           //beings horizontal win Checker @ position 0,0
+        if (counter2 == 9 && winner == null) {
+            messagetext.setText("Cat's Game :(");
+            Toast.makeText(GameActivity.this, "here kitty kitty... Meow", Toast.LENGTH_LONG).show();
+        }
+
+        //beings horizontal win Checker @ position 0,0
             if (playTracker[0][0] == 0 || playTracker[0][1] == 0 || playTracker[0][2] == 0 ){
             } else if(playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]){
 
@@ -260,10 +283,20 @@ public class GameActivity extends AppCompatActivity {
                     winner = "1";
                     saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box1.setBackgroundColor(getColor(R.color.colorAccent));
+                    box2.setBackgroundColor(getColor(R.color.colorAccent));
+                    box3.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
                     winner = "2";
                     saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box1.setBackgroundColor(getColor(R.color.colorAccent));
+                    box2.setBackgroundColor(getColor(R.color.colorAccent));
+                    box3.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
 
@@ -272,9 +305,23 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[1][0] == playTracker[1][1] && playTracker[1][0] == playTracker[1][2]){
 
                 if (playTracker[1][1] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box4.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box6.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box4.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box6.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
 
@@ -283,9 +330,23 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[2][0] == playTracker[2][1] && playTracker[2][0] == playTracker[2][2]){
 
                 if (playTracker[2][1] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box7.setBackgroundColor(getColor(R.color.colorAccent));
+                    box8.setBackgroundColor(getColor(R.color.colorAccent));
+                    box9.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box7.setBackgroundColor(getColor(R.color.colorAccent));
+                    box8.setBackgroundColor(getColor(R.color.colorAccent));
+                    box9.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
 
@@ -294,9 +355,23 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[0][0] == playTracker[1][0] && playTracker[2][0] == playTracker[0][0]){
 
                 if (playTracker[0][0] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box1.setBackgroundColor(getColor(R.color.colorAccent));
+                    box4.setBackgroundColor(getColor(R.color.colorAccent));
+                    box7.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box1.setBackgroundColor(getColor(R.color.colorAccent));
+                    box4.setBackgroundColor(getColor(R.color.colorAccent));
+                    box7.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
 
@@ -305,9 +380,23 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[0][1] == playTracker[1][1] && playTracker[2][1] == playTracker[0][1]){
 
                 if (playTracker[0][1] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box2.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box8.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box2.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box8.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
 
@@ -316,9 +405,23 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[0][2] == playTracker[1][2] && playTracker[2][2] == playTracker[0][2]){
 
                 if (playTracker[0][2] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box3.setBackgroundColor(getColor(R.color.colorAccent));
+                    box6.setBackgroundColor(getColor(R.color.colorAccent));
+                    box9.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box3.setBackgroundColor(getColor(R.color.colorAccent));
+                    box6.setBackgroundColor(getColor(R.color.colorAccent));
+                    box9.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
                 //Diagonal left to right from 0,0 Win checker
@@ -326,9 +429,23 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[0][0] == playTracker[1][1] && playTracker[2][2] == playTracker[0][0]){
 
                 if (playTracker[0][0] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box1.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box9.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box1.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box9.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
                 //Diagonal from left to right starting at 2,0 win checker
@@ -336,11 +453,26 @@ public class GameActivity extends AppCompatActivity {
             } else if(playTracker[2][0] == playTracker[1][1] && playTracker[0][2] == playTracker[2][0]){
 
                 if (playTracker[2][0] == 1) {
+                    winner = "1";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player1 + " Wins!");
+                    disableAllTheClickers();
+                    box3.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box7.setBackgroundColor(getColor(R.color.colorAccent));
                 } else {
+                    winner = "2";
+                    saveWinner();
                     Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                    messagetext.setText(player2 + " Wins!");
+                    disableAllTheClickers();
+                    box3.setBackgroundColor(getColor(R.color.colorAccent));
+                    box5.setBackgroundColor(getColor(R.color.colorAccent));
+                    box7.setBackgroundColor(getColor(R.color.colorAccent));
                 }
             }
+
     }
 
 }

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         sharedpreferences = getApplicationContext().getSharedPreferences("naughtsAndCrossesKey", getApplicationContext().MODE_PRIVATE);
         theWinner = sharedpreferences.getString("winner", "");
-        previousWinner.setText(theWinner);
+        previousWinner.setText("Player " +theWinner + " was the last winner");
     }
 
 }
