@@ -21,6 +21,20 @@
         android:paddingBottom="100dp"
         android:textIsSelectable="false" />
 
+    <Button
+        android:id="@+id/replayButton"
+        android:text="Play Again"
+        android:elevation="15dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gridLayout"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"/>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +46,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:foregroundTint="#E1BEE7"
-        android:foregroundTintMode="add">
+        android:foregroundTintMode="add"
+        android:id="@+id/gridLayout">
 
         <TextView
             android:layout_width="100dp"

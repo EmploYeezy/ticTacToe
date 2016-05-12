@@ -8,10 +8,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import static android.widget.Toast.makeText;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -26,7 +29,9 @@ public class GameActivity extends AppCompatActivity {
     private TextView box8;
     private TextView box9;
     public String winner;
-    int [] [] playTracker = new int [3][3];
+    public Button replayButton;
+
+    int[][] playTracker = new int[3][3];
     //private char playTracker;
     //private int position;
     //private int counter;
@@ -44,6 +49,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        replayButton = (Button) findViewById(R.id.replayButton);
         messagetext = (TextView) findViewById(R.id.game_message_text);
         box1 = (TextView) findViewById(R.id.textView);
         box2 = (TextView) findViewById(R.id.textView2);
@@ -55,6 +61,7 @@ public class GameActivity extends AppCompatActivity {
         box8 = (TextView) findViewById(R.id.textView8);
         box9 = (TextView) findViewById(R.id.textView9);
 
+
         Intent getIntent = getIntent();
         final String player1 = getIntent.getStringExtra("Player1");
         final String player2 = getIntent.getStringExtra("Player2");
@@ -62,6 +69,7 @@ public class GameActivity extends AppCompatActivity {
         //Log.d("GameActivity", player1);
 
         messagetext.setText(player1 + " is naughts");
+
 
 
         box1.setOnClickListener(new View.OnClickListener() {
@@ -235,8 +243,6 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-
-
     @Override
     public String toString() {
         return "GameActivity{" +
@@ -265,214 +271,231 @@ public class GameActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     public void checkForWinner() {
-            counter2++;
-        Intent getIntent = getIntent();
-        final String player1 = getIntent.getStringExtra("Player1");
-        final String player2 = getIntent.getStringExtra("Player2");
+        counter2++;
 
-        if (counter2 == 9 && winner == null) {
+        if (counter2 > 8 && winner == null) {
+            makeText(GameActivity.this, "here kitty kitty... Meow", Toast.LENGTH_LONG).show();
             messagetext.setText("Cat's Game :(");
-            Toast.makeText(GameActivity.this, "here kitty kitty... Meow", Toast.LENGTH_LONG).show();
         }
 
+        Intent getIntent = getIntent(); //this shouldn't be here. It's a really shitty hack.
+        final String player1 = getIntent.getStringExtra("Player1"); //yup, pretty bad.
+        final String player2 = getIntent.getStringExtra("Player2"); //like, wow.
+
+
+
+        replayButton.setClickable(true);
+        replayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(GameActivity.this, GameActivity.class);
+                String name1 = (player1);
+                String name2 = (player2);
+                mIntent.putExtra("Player1", name1);
+                mIntent.putExtra("Player2", name2);
+                startActivity(mIntent);
+            }
+        });
+
+
         //beings horizontal win Checker @ position 0,0
-            if (playTracker[0][0] == 0 || playTracker[0][1] == 0 || playTracker[0][2] == 0 ){
-            } else if(playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]){
+        if (playTracker[0][0] == 0 || playTracker[0][1] == 0 || playTracker[0][2] == 0) {
+        } else if (playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]) {
 
-                if (playTracker[0][0] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box1.setBackgroundColor(getColor(R.color.colorAccent));
-                    box2.setBackgroundColor(getColor(R.color.colorAccent));
-                    box3.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box1.setBackgroundColor(getColor(R.color.colorAccent));
-                    box2.setBackgroundColor(getColor(R.color.colorAccent));
-                    box3.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[0][0] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box1.setBackgroundColor(getColor(R.color.colorAccent));
+                box2.setBackgroundColor(getColor(R.color.colorAccent));
+                box3.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box1.setBackgroundColor(getColor(R.color.colorAccent));
+                box2.setBackgroundColor(getColor(R.color.colorAccent));
+                box3.setBackgroundColor(getColor(R.color.colorAccent));
             }
+        }
 
-            //line two horizontal checker
-            if (playTracker[1][0] == 0 || playTracker[1][1] == 0 || playTracker[1][2] == 0 ){
-            } else if(playTracker[1][0] == playTracker[1][1] && playTracker[1][0] == playTracker[1][2]){
+        //line two horizontal checker
+        if (playTracker[1][0] == 0 || playTracker[1][1] == 0 || playTracker[1][2] == 0) {
+        } else if (playTracker[1][0] == playTracker[1][1] && playTracker[1][0] == playTracker[1][2]) {
 
-                if (playTracker[1][1] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box4.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box6.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box4.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box6.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[1][1] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box4.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box6.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box4.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box6.setBackgroundColor(getColor(R.color.colorAccent));
             }
+        }
 
-            //line three horizontal checker
-            if (playTracker[2][0] == 0 || playTracker[2][1] == 0 || playTracker[2][2] == 0 ){
-            } else if(playTracker[2][0] == playTracker[2][1] && playTracker[2][0] == playTracker[2][2]){
+        //line three horizontal checker
+        if (playTracker[2][0] == 0 || playTracker[2][1] == 0 || playTracker[2][2] == 0) {
+        } else if (playTracker[2][0] == playTracker[2][1] && playTracker[2][0] == playTracker[2][2]) {
 
-                if (playTracker[2][1] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box7.setBackgroundColor(getColor(R.color.colorAccent));
-                    box8.setBackgroundColor(getColor(R.color.colorAccent));
-                    box9.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box7.setBackgroundColor(getColor(R.color.colorAccent));
-                    box8.setBackgroundColor(getColor(R.color.colorAccent));
-                    box9.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[2][1] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box7.setBackgroundColor(getColor(R.color.colorAccent));
+                box8.setBackgroundColor(getColor(R.color.colorAccent));
+                box9.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box7.setBackgroundColor(getColor(R.color.colorAccent));
+                box8.setBackgroundColor(getColor(R.color.colorAccent));
+                box9.setBackgroundColor(getColor(R.color.colorAccent));
             }
+        }
 
-            //Begins Vertical checkers column 1
-            if (playTracker[0][0] == 0 || playTracker[1][0] == 0 || playTracker[2][0] == 0 ){
-            } else if(playTracker[0][0] == playTracker[1][0] && playTracker[2][0] == playTracker[0][0]){
+        //Begins Vertical checkers column 1
+        if (playTracker[0][0] == 0 || playTracker[1][0] == 0 || playTracker[2][0] == 0) {
+        } else if (playTracker[0][0] == playTracker[1][0] && playTracker[2][0] == playTracker[0][0]) {
 
-                if (playTracker[0][0] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box1.setBackgroundColor(getColor(R.color.colorAccent));
-                    box4.setBackgroundColor(getColor(R.color.colorAccent));
-                    box7.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box1.setBackgroundColor(getColor(R.color.colorAccent));
-                    box4.setBackgroundColor(getColor(R.color.colorAccent));
-                    box7.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[0][0] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box1.setBackgroundColor(getColor(R.color.colorAccent));
+                box4.setBackgroundColor(getColor(R.color.colorAccent));
+                box7.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box1.setBackgroundColor(getColor(R.color.colorAccent));
+                box4.setBackgroundColor(getColor(R.color.colorAccent));
+                box7.setBackgroundColor(getColor(R.color.colorAccent));
             }
+        }
 
-                //Vertical checkers column 2
-            if (playTracker[0][1] == 0 || playTracker[1][1] == 0 || playTracker[2][1] == 0 ){
-            } else if(playTracker[0][1] == playTracker[1][1] && playTracker[2][1] == playTracker[0][1]){
+        //Vertical checkers column 2
+        if (playTracker[0][1] == 0 || playTracker[1][1] == 0 || playTracker[2][1] == 0) {
+        } else if (playTracker[0][1] == playTracker[1][1] && playTracker[2][1] == playTracker[0][1]) {
 
-                if (playTracker[0][1] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box2.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box8.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box2.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box8.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[0][1] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box2.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box8.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box2.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box8.setBackgroundColor(getColor(R.color.colorAccent));
             }
+        }
 
-                //Vertical column three checker
-            if (playTracker[0][2] == 0 || playTracker[1][2] == 0 || playTracker[2][2] == 0 ){
-            } else if(playTracker[0][2] == playTracker[1][2] && playTracker[2][2] == playTracker[0][2]){
+        //Vertical column three checker
+        if (playTracker[0][2] == 0 || playTracker[1][2] == 0 || playTracker[2][2] == 0) {
+        } else if (playTracker[0][2] == playTracker[1][2] && playTracker[2][2] == playTracker[0][2]) {
 
-                if (playTracker[0][2] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box3.setBackgroundColor(getColor(R.color.colorAccent));
-                    box6.setBackgroundColor(getColor(R.color.colorAccent));
-                    box9.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box3.setBackgroundColor(getColor(R.color.colorAccent));
-                    box6.setBackgroundColor(getColor(R.color.colorAccent));
-                    box9.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[0][2] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box3.setBackgroundColor(getColor(R.color.colorAccent));
+                box6.setBackgroundColor(getColor(R.color.colorAccent));
+                box9.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box3.setBackgroundColor(getColor(R.color.colorAccent));
+                box6.setBackgroundColor(getColor(R.color.colorAccent));
+                box9.setBackgroundColor(getColor(R.color.colorAccent));
             }
-                //Diagonal left to right from 0,0 Win checker
-            if (playTracker[0][0] == 0 || playTracker[1][1] == 0 || playTracker[2][2] == 0 ){
-            } else if(playTracker[0][0] == playTracker[1][1] && playTracker[2][2] == playTracker[0][0]){
+        }
+        //Diagonal left to right from 0,0 Win checker
+        if (playTracker[0][0] == 0 || playTracker[1][1] == 0 || playTracker[2][2] == 0) {
+        } else if (playTracker[0][0] == playTracker[1][1] && playTracker[2][2] == playTracker[0][0]) {
 
-                if (playTracker[0][0] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box1.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box9.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box1.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box9.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[0][0] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box1.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box9.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box1.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box9.setBackgroundColor(getColor(R.color.colorAccent));
             }
-                //Diagonal from left to right starting at 2,0 win checker
-            if (playTracker[2][0] == 0 || playTracker[1][1] == 0 || playTracker[0][2] == 0 ){
-            } else if(playTracker[2][0] == playTracker[1][1] && playTracker[0][2] == playTracker[2][0]){
+        }
+        //Diagonal from left to right starting at 2,0 win checker
+        if (playTracker[2][0] == 0 || playTracker[1][1] == 0 || playTracker[0][2] == 0) {
+        } else if (playTracker[2][0] == playTracker[1][1] && playTracker[0][2] == playTracker[2][0]) {
 
-                if (playTracker[2][0] == 1) {
-                    winner = "1";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player1 + " Wins!");
-                    disableAllTheClickers();
-                    box3.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box7.setBackgroundColor(getColor(R.color.colorAccent));
-                } else {
-                    winner = "2";
-                    saveWinner();
-                    Toast.makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                    messagetext.setText(player2 + " Wins!");
-                    disableAllTheClickers();
-                    box3.setBackgroundColor(getColor(R.color.colorAccent));
-                    box5.setBackgroundColor(getColor(R.color.colorAccent));
-                    box7.setBackgroundColor(getColor(R.color.colorAccent));
-                }
+            if (playTracker[2][0] == 1) {
+                winner = "1";
+                saveWinner();
+                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + " Wins!");
+                disableAllTheClickers();
+                box3.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box7.setBackgroundColor(getColor(R.color.colorAccent));
+            } else {
+                winner = "2";
+                saveWinner();
+                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + " Wins!");
+                disableAllTheClickers();
+                box3.setBackgroundColor(getColor(R.color.colorAccent));
+                box5.setBackgroundColor(getColor(R.color.colorAccent));
+                box7.setBackgroundColor(getColor(R.color.colorAccent));
             }
+        }
 
     }
-
 }
+
