@@ -9,4 +9,6 @@
     <string name="isnaughts">" is naughts"</string>
     <string name="X">X</string>
     <string name="O">O</string>
+    <string name="Player">"Player "</string>
+    <string name="wasthewinner">" was the last winner"</string>
 </resources>

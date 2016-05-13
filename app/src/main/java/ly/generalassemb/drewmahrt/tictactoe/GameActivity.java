@@ -290,9 +290,7 @@ public class GameActivity extends AppCompatActivity {
                 String name2 = (player2);
                 mIntent.putExtra("Player1", name1);
                 mIntent.putExtra("Player2", name2);
-
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(GameActivity.this);
-
                 startActivity(mIntent, options.toBundle());
             }
         });

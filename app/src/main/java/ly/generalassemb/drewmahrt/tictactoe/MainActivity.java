@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     TextView previousWinner;
     SharedPreferences sharedpreferences;
     String theWinner;
+    String name1 = "";
+    String name2 = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                    String name1 = (player1Name).getText().toString();
-                    String name2 = (player2Name).getText().toString();
+                    name1 = (player1Name).getText().toString();
+                    name2 = (player2Name).getText().toString();
                     intent.putExtra("Player1", name1);
                     intent.putExtra("Player2", name2);
                     startActivity(intent);
@@ -38,11 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
         sharedpreferences = getApplicationContext().getSharedPreferences("naughtsAndCrossesKey", getApplicationContext().MODE_PRIVATE);
         theWinner = sharedpreferences.getString("winner", "");
 
-        previousWinner.setText("Player " +theWinner + " was the last winner");
+        if (theWinner == null) {
+            previousWinner.setText("");
+        } else if (theWinner == "1") {
+                previousWinner.setText(name1 + (getResources().getString(R.string.wasthewinner)));
+            } else if (theWinner == "2"){
+            previousWinner.setText(name2 + (getResources().getString(R.string.wasthewinner)));
+        }
     }
-
 }
