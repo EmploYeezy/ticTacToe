@@ -1,18 +1,19 @@
 package ly.generalassemb.drewmahrt.tictactoe;
 
 import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import static android.widget.Toast.makeText;
 
@@ -32,21 +33,12 @@ public class GameActivity extends AppCompatActivity {
     public Button replayButton;
 
     int[][] playTracker = new int[3][3];
-    //private char playTracker;
-    //private int position;
-    //private int counter;
     private int counter2;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-    //private int mplayer1;
-    //private int mplayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        thingExploder();
         setContentView(R.layout.activity_game);
 
         replayButton = (Button) findViewById(R.id.replayButton);
@@ -61,29 +53,24 @@ public class GameActivity extends AppCompatActivity {
         box8 = (TextView) findViewById(R.id.textView8);
         box9 = (TextView) findViewById(R.id.textView9);
 
-
         Intent getIntent = getIntent();
         final String player1 = getIntent.getStringExtra("Player1");
         final String player2 = getIntent.getStringExtra("Player2");
-        //just a test to make sure my shizznit is coming over
-        //Log.d("GameActivity", player1);
 
-        messagetext.setText(player1 + " is naughts");
-
-
+        messagetext.setText(player1 + getString(R.string.isnaughts));
 
         box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box1.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box1.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[0][0] = 1;
                     box1.setClickable(false);
                 } else {
-                    box1.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box1.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[0][0] = 2;
                     box1.setClickable(false);
                 }
@@ -96,13 +83,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box2.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box2.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[0][1] = 1;
                     box2.setClickable(false);
                 } else {
-                    box2.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box2.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[0][1] = 2;
                     box2.setClickable(false);
                 }
@@ -115,13 +102,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box3.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box3.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[0][2] = 1;
                     box3.setClickable(false);
                 } else {
-                    box3.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box3.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[0][2] = 2;
                     box3.setClickable(false);
                 }
@@ -134,13 +121,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box4.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box4.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[1][0] = 1;
                     box4.setClickable(false);
                 } else {
-                    box4.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box4.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[1][0] = 2;
                     box4.setClickable(false);
                 }
@@ -153,13 +140,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box5.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box5.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[1][1] = 1;
                     box5.setClickable(false);
                 } else {
-                    box5.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box5.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[1][1] = 2;
                     box5.setClickable(false);
                 }
@@ -172,13 +159,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box6.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box6.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[1][2] = 1;
                     box6.setClickable(false);
                 } else {
-                    box6.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box6.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[1][2] = 2;
                     box6.setClickable(false);
                 }
@@ -191,13 +178,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box7.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box7.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[2][0] = 1;
                     box7.setClickable(false);
                 } else {
-                    box7.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box7.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[2][0] = 2;
                     box7.setClickable(false);
                 }
@@ -210,13 +197,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (counter2 % 2 == 0) {
-                    box8.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box8.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[2][1] = 1;
                     box8.setClickable(false);
                 } else {
-                    box8.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box8.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[2][1] = 2;
                     box8.setClickable(false);
                 }
@@ -228,13 +215,13 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (counter2 % 2 == 0) {
-                    box9.setText("O");
-                    messagetext.setText(player2 + "'s turn");
+                    box9.setText(R.string.O);
+                    messagetext.setText(player2 + getString(R.string.sturn));
                     playTracker[2][2] = 1;
                     box9.setClickable(false);
                 } else {
-                    box9.setText("X");
-                    messagetext.setText(player1 + "'s turn");
+                    box9.setText(R.string.X);
+                    messagetext.setText(player1 + getString(R.string.sturn));
                     playTracker[2][2] = 2;
                     box9.setClickable(false);
                 }
@@ -269,20 +256,30 @@ public class GameActivity extends AppCompatActivity {
         box9.setClickable(false);
     }
 
+    public void thingExploder(){
+//        TransitionSet transition = new TransitionSet();
+//        transition.addTransition((new ChangeTransform()));
+//
+//        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//        getWindow().setSharedElementEnterTransition(transition);
+//        getWindow().setSharedElementReturnTransition(transition);
+
+        getWindow().setExitTransition(new Explode());
+        getWindow().setEnterTransition(new Fade());
+    }
+
     @TargetApi(Build.VERSION_CODES.M)
     public void checkForWinner() {
         counter2++;
 
         if (counter2 > 8 && winner == null) {
-            makeText(GameActivity.this, "here kitty kitty... Meow", Toast.LENGTH_LONG).show();
-            messagetext.setText("Cat's Game :(");
+            makeText(GameActivity.this, R.string.meow, Toast.LENGTH_LONG).show();
+            messagetext.setText(R.string.catsgame);
         }
 
         Intent getIntent = getIntent(); //this shouldn't be here. It's a really shitty hack.
         final String player1 = getIntent.getStringExtra("Player1"); //yup, pretty bad.
         final String player2 = getIntent.getStringExtra("Player2"); //like, wow.
-
-
 
         replayButton.setClickable(true);
         replayButton.setOnClickListener(new View.OnClickListener() {
@@ -293,11 +290,12 @@ public class GameActivity extends AppCompatActivity {
                 String name2 = (player2);
                 mIntent.putExtra("Player1", name1);
                 mIntent.putExtra("Player2", name2);
-                startActivity(mIntent);
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(GameActivity.this);
+
+                startActivity(mIntent, options.toBundle());
             }
         });
-
-
         //beings horizontal win Checker @ position 0,0
         if (playTracker[0][0] == 0 || playTracker[0][1] == 0 || playTracker[0][2] == 0) {
         } else if (playTracker[0][0] == playTracker[0][1] && playTracker[0][0] == playTracker[0][2]) {
@@ -305,8 +303,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[0][0] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box1.setBackgroundColor(getColor(R.color.colorAccent));
                 box2.setBackgroundColor(getColor(R.color.colorAccent));
@@ -314,15 +312,14 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box1.setBackgroundColor(getColor(R.color.colorAccent));
                 box2.setBackgroundColor(getColor(R.color.colorAccent));
                 box3.setBackgroundColor(getColor(R.color.colorAccent));
             }
         }
-
         //line two horizontal checker
         if (playTracker[1][0] == 0 || playTracker[1][1] == 0 || playTracker[1][2] == 0) {
         } else if (playTracker[1][0] == playTracker[1][1] && playTracker[1][0] == playTracker[1][2]) {
@@ -330,8 +327,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[1][1] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box4.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
@@ -339,15 +336,14 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box4.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
                 box6.setBackgroundColor(getColor(R.color.colorAccent));
             }
         }
-
         //line three horizontal checker
         if (playTracker[2][0] == 0 || playTracker[2][1] == 0 || playTracker[2][2] == 0) {
         } else if (playTracker[2][0] == playTracker[2][1] && playTracker[2][0] == playTracker[2][2]) {
@@ -355,8 +351,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[2][1] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box7.setBackgroundColor(getColor(R.color.colorAccent));
                 box8.setBackgroundColor(getColor(R.color.colorAccent));
@@ -364,15 +360,14 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box7.setBackgroundColor(getColor(R.color.colorAccent));
                 box8.setBackgroundColor(getColor(R.color.colorAccent));
                 box9.setBackgroundColor(getColor(R.color.colorAccent));
             }
         }
-
         //Begins Vertical checkers column 1
         if (playTracker[0][0] == 0 || playTracker[1][0] == 0 || playTracker[2][0] == 0) {
         } else if (playTracker[0][0] == playTracker[1][0] && playTracker[2][0] == playTracker[0][0]) {
@@ -380,8 +375,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[0][0] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box1.setBackgroundColor(getColor(R.color.colorAccent));
                 box4.setBackgroundColor(getColor(R.color.colorAccent));
@@ -389,15 +384,14 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box1.setBackgroundColor(getColor(R.color.colorAccent));
                 box4.setBackgroundColor(getColor(R.color.colorAccent));
                 box7.setBackgroundColor(getColor(R.color.colorAccent));
             }
         }
-
         //Vertical checkers column 2
         if (playTracker[0][1] == 0 || playTracker[1][1] == 0 || playTracker[2][1] == 0) {
         } else if (playTracker[0][1] == playTracker[1][1] && playTracker[2][1] == playTracker[0][1]) {
@@ -405,8 +399,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[0][1] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box2.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
@@ -414,15 +408,14 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box2.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
                 box8.setBackgroundColor(getColor(R.color.colorAccent));
             }
         }
-
         //Vertical column three checker
         if (playTracker[0][2] == 0 || playTracker[1][2] == 0 || playTracker[2][2] == 0) {
         } else if (playTracker[0][2] == playTracker[1][2] && playTracker[2][2] == playTracker[0][2]) {
@@ -430,8 +423,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[0][2] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box3.setBackgroundColor(getColor(R.color.colorAccent));
                 box6.setBackgroundColor(getColor(R.color.colorAccent));
@@ -439,8 +432,8 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box3.setBackgroundColor(getColor(R.color.colorAccent));
                 box6.setBackgroundColor(getColor(R.color.colorAccent));
@@ -454,8 +447,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[0][0] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box1.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
@@ -463,8 +456,8 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box1.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
@@ -478,8 +471,8 @@ public class GameActivity extends AppCompatActivity {
             if (playTracker[2][0] == 1) {
                 winner = "1";
                 saveWinner();
-                makeText(GameActivity.this, "Player 1 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player1 + " Wins!");
+                makeText(GameActivity.this, R.string.playeronewins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player1 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box3.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
@@ -487,15 +480,14 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 winner = "2";
                 saveWinner();
-                makeText(GameActivity.this, "Player 2 wins", Toast.LENGTH_SHORT).show();
-                messagetext.setText(player2 + " Wins!");
+                makeText(GameActivity.this, R.string.player2wins, Toast.LENGTH_SHORT).show();
+                messagetext.setText(player2 + getString(R.string.Wins));
                 disableAllTheClickers();
                 box3.setBackgroundColor(getColor(R.color.colorAccent));
                 box5.setBackgroundColor(getColor(R.color.colorAccent));
                 box7.setBackgroundColor(getColor(R.color.colorAccent));
             }
         }
-
     }
 }
 

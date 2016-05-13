@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Naughts and Crosses</string>
+    <string name="catsgame">Cat\'s Game :(</string>
+    <string name="playeronewins">Player 1 wins</string>
+    <string name="player2wins">Player 2 wins</string>
+    <string name="Wins">" Wins!"</string>
+    <string name="meow">here kitty kitty... Meow</string>
+    <string name="sturn">\'s turn</string>
+    <string name="isnaughts">" is naughts"</string>
+    <string name="X">X</string>
+    <string name="O">O</string>
 </resources>
